@@ -20,20 +20,15 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 	Usuario *usuario_Nuevo;
 	Amigo *amigo_Nuevo;
-	int comillas = 0;
-	char pieza[1];
 	char comilla[1] = {"\""};
 	char espacio = {" "};
 	char linea = {"\n"};
 	char verf_Linea;
-	int i = 0;
 
 	// Se leera la lista de usuarios
 
 	while (feof(files) == 0)
 	{
-		i = 0;
-		comillas = 0;
 		usuario_Nuevo = (Usuario *)malloc(sizeof(Usuario));
 		fscanf(files,"%s -> ",&usuario_Nuevo -> Nombre);
 		fflush(stdin);
@@ -77,14 +72,13 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 		{
 			usuario_Nuevo -> anterior =
 					base_Datos_Usuario -> ultimoUsuario;
-			base_Datos_Usuario -> ultimoUsuario ->siguiente =
+			base_Datos_Usuario -> ultimoUsuario -> siguiente =
 					usuario_Nuevo;
 			base_Datos_Usuario -> ultimoUsuario = usuario_Nuevo;
 
 
 		}
-		return base_Datos_Usuario;
 
 	}
-
+	return base_Datos_Usuario;
 }
