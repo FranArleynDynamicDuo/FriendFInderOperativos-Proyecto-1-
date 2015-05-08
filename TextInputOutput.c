@@ -82,3 +82,10 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 	}
 	return base_Datos_Usuario;
 }
+
+void GuardarResultados(FILE *files,ListaUsuarios *base_Datos_Usuario)
+{
+
+	return;
+
+}
