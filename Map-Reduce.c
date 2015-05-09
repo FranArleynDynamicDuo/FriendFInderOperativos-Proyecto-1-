@@ -9,7 +9,7 @@
 #include "Map-Reduce.h"
 #include "ListaAmigos.h"
 
-ListaMap *Mapeo(ListaUsuario *base_Datos_Usuario) /*base_Datos_Usuarios Nombre de la listas de listas*/
+ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario) /*base_Datos_Usuarios Nombre de la listas de listas*/
 
 {
 	Usuario *aux;
