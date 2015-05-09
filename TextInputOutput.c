@@ -10,6 +10,7 @@
 #include <string.h>
 #include "ListaAmigos.h"
 
+
 ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 {
 
@@ -20,30 +21,41 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 	Usuario *usuario_Nuevo;
 	Amigo *amigo_Nuevo;
-	char comilla[1] = {"\""};
-	char espacio = {" "};
-	char linea = {"\n"};
+
+	char linea[1] = {"\n"};
 	char verf_Linea;
 
 	// Se leera la lista de usuarios
 
 	while (feof(files) == 0)
 	{
+		printf("PRIMER CICLO \n \n");
 		usuario_Nuevo = (Usuario *)malloc(sizeof(Usuario));
-		fscanf(files,"%s -> ",&usuario_Nuevo -> Nombre);
+		usuario_Nuevo->anterior = NULL;
+		usuario_Nuevo->primerAmigo = NULL;
+		usuario_Nuevo->siguiente = NULL;
+		usuario_Nuevo->ultimoAmigo = NULL;
+		fscanf(files,"%s -> ",usuario_Nuevo -> Nombre);
 		fflush(stdin);
+		printf("%s \n\n",usuario_Nuevo ->Nombre);
 
 		// En este ciclo se leeran los amigos, leyendo un string y
 		// luego un caracter, el string se guarda y luego se verifica
 		// si el caracter es \n o " "
 
-		while (verf_Linea != linea)
+		while (verf_Linea != '\n')
 		{
+
+			printf("SEGUNDO CICLO \n \n");
 			amigo_Nuevo = (Amigo *)malloc(sizeof(Amigo));
-			fscanf(files,"%s",&amigo_Nuevo -> Nombre);
+			amigo_Nuevo ->anterior = NULL;
+			amigo_Nuevo ->siguiente = NULL;
+			fscanf(files,"%s",amigo_Nuevo -> Nombre);
 			fflush(stdin);
 			fscanf(files,"%c",&verf_Linea);
 			fflush(stdin);
+			printf("%s \n",usuario_Nuevo -> Nombre);
+			printf("%s \n \n",amigo_Nuevo -> Nombre);
 
 			if (usuario_Nuevo -> primerAmigo == NULL)
 			{
@@ -78,6 +90,8 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 
 		}
+
+
 
 	}
 	return base_Datos_Usuario;

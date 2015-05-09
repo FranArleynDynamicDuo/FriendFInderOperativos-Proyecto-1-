@@ -11,7 +11,7 @@
 typedef struct usuario
 
 {
-	char* Nombre;
+	char Nombre[30];
 	struct Usuario *siguiente;
 	struct Usuario *anterior;
 	struct Amigo *primerAmigo;
@@ -22,7 +22,7 @@ typedef struct usuario
 typedef struct Amigo
 
 {
-	char* Nombre;
+	char Nombre[30];
 	struct Amigo *siguiente;
 	struct Amigo *anterior;
 
