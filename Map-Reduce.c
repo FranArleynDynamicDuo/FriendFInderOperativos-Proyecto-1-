@@ -9,7 +9,7 @@
 #include "Map-Reduce.h"
 #include "ListaAmigos.h"
 
-ListaMap *Mapeo(Usuario *base_Datos_Usuario) /*base_Datos_Usuarios Nombre de la listas de listas*/
+ListaMap *Mapeo(ListaUsuario *base_Datos_Usuario) /*base_Datos_Usuarios Nombre de la listas de listas*/
 
 {
 	Usuario *aux;
@@ -19,15 +19,14 @@ ListaMap *Mapeo(Usuario *base_Datos_Usuario) /*base_Datos_Usuarios Nombre de la 
 	Map *auxMap;
 	aux = base_Datos_Usuario->primerUsuario;
 
-
 	while (aux != NULL)
 
 	{
-
 		auxx = aux->primerAmigo;
 		while (auxx != NULL)
 
 		{
+
 			Map *nuevo = (Map *)malloc(sizeof(Map));
 			auxMap = nuevo;
 			auxxx = aux->primerAmigo;
