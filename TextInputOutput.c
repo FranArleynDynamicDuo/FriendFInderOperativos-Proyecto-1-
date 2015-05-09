@@ -10,6 +10,7 @@
 #include <string.h>
 #include "ListaAmigos.h"
 
+
 ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 {
 
@@ -20,18 +21,25 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 	Usuario *usuario_Nuevo;
 	Amigo *amigo_Nuevo;
-	char comilla[1] = {"\""};
-	char espacio = {" "};
-	char linea = {"\n"};
+
+	char linea = '\n';
 	char verf_Linea;
 
 	// Se leera la lista de usuarios
 
 	while (feof(files) == 0)
 	{
+		printf("PRIMER CICLO \n \n");
 		usuario_Nuevo = (Usuario *)malloc(sizeof(Usuario));
-		fscanf(files,"%s -> ",&usuario_Nuevo -> Nombre);
+		usuario_Nuevo->anterior = NULL;
+		usuario_Nuevo->primerAmigo = NULL;
+		usuario_Nuevo->siguiente = NULL;
+		usuario_Nuevo->ultimoAmigo = NULL;
+		fscanf(files,"%s -> ",usuario_Nuevo -> Nombre);
 		fflush(stdin);
+		printf("%s \n\n",usuario_Nuevo ->Nombre);
+		fflush(stdin);
+		verf_Linea = '\0';
 
 		// En este ciclo se leeran los amigos, leyendo un string y
 		// luego un caracter, el string se guarda y luego se verifica
@@ -39,10 +47,20 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 		while (verf_Linea != linea)
 		{
+			printf("SEGUNDO CICLO \n \n");
+			fflush(stdin);
 			amigo_Nuevo = (Amigo *)malloc(sizeof(Amigo));
-			fscanf(files,"%s",&amigo_Nuevo -> Nombre);
+			amigo_Nuevo ->anterior = NULL;
+			amigo_Nuevo ->siguiente = NULL;
+			fscanf(files,"%s",amigo_Nuevo -> Nombre);
 			fflush(stdin);
 			fscanf(files,"%c",&verf_Linea);
+			fflush(stdin);
+			fflush(stdin);
+			fflush(stdin);
+			printf("%s \n",usuario_Nuevo -> Nombre);
+			fflush(stdin);
+			printf("%s \n \n",amigo_Nuevo -> Nombre);
 			fflush(stdin);
 
 			if (usuario_Nuevo -> primerAmigo == NULL)
@@ -59,6 +77,8 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 				usuario_Nuevo -> ultimoAmigo = amigo_Nuevo;
 
 			}
+
+			if (feof(files) != 0){break;}
 
 		}
 
@@ -78,7 +98,13 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 
 		}
-
 	}
 	return base_Datos_Usuario;
+}
+
+void GuardarResultados(FILE *files,ListaUsuarios *base_Datos_Usuario)
+{
+	// Algoritmo que guardara los resultados de varias cosas
+	return;
+
 }
