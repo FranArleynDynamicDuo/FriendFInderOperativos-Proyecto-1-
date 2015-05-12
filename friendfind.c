@@ -16,6 +16,7 @@ int main(int argc,char *argv[])
 {
 	FILE *entrada;
 	FILE *output;
+	ListaMap *base_mapeada = (ListaMap *)malloc(sizeof(ListaUsuarios));
 	entrada = fopen(argv[1], "r");
 	ListaUsuarios *base_Datos_Usuario =
 			(ListaUsuarios *)malloc(sizeof(ListaUsuarios));
@@ -27,7 +28,19 @@ int main(int argc,char *argv[])
 			base_Datos_Usuario->primerUsuario->Nombre);
 	printf("Ultimo Usuario: %s \n \n",
 			base_Datos_Usuario->ultimoUsuario->Nombre);
+	ListaMap *base_Mapeada = (ListaMap *)malloc(sizeof(ListaMap));
+	base_Mapeada -> primero = NULL;
+	base_Mapeada-> ultimo = NULL;
+	Mapeo(base_Datos_Usuario,base_Mapeada);
 
+	printf("Primer Usuario: %s\n \n",
+			base_Mapeada -> primero -> UsuarioMap);
+	printf("Primer Amigo: %s\n \n",
+			base_Mapeada -> primero -> AmigoMap);
+	printf("Ultimo Usuario: %s \n \n",
+			base_Mapeada -> ultimo-> UsuarioMap);
+	printf("Ultimo Amigo: %s \n \n",
+			base_Mapeada -> ultimo-> AmigoMap);
 
 	return 0;
 }

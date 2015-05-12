@@ -7,21 +7,22 @@
 
 #ifndef MAP_REDUCE_H_
 #define MAP_REDUCE_H_
+#include "ListaAmigos.h"
 
 typedef struct map
 
 {
-	char UsuarioMap[30];
-	char AmigoMap[30];
+	char* UsuarioMap;
+	char* AmigoMap;
 	struct AmigoM *siguiente;
 	struct AmigoM *anterior;
 
-} Map
+} Map;
 
 typedef struct amigoM
 
 {
-	char AmigoM[30];
+	char* AmigoM;
 	struct Amigo *siguiente;
 	struct Amigo *anterior;
 
@@ -34,6 +35,9 @@ typedef struct listaMap
 	Map *ultimo;
 
 } ListaMap;
+
+ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
+		ListaMap *base_Mapeada);
 
 
 #endif /* MAP_REDUCE_H_ */
