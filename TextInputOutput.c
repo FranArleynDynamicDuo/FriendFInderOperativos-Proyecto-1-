@@ -21,6 +21,7 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 	Usuario *usuario_Nuevo;
 	Amigo *amigo_Nuevo;
+	char nombre_Local[100];
 
 	char linea = '\n';
 	char verf_Linea;
@@ -35,8 +36,12 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 		usuario_Nuevo->primerAmigo = NULL;
 		usuario_Nuevo->siguiente = NULL;
 		usuario_Nuevo->ultimoAmigo = NULL;
-		fscanf(files,"%s -> ",usuario_Nuevo -> Nombre);
+		fscanf(files,"%s -> ",nombre_Local);
 		fflush(stdin);
+		usuario_Nuevo -> Nombre =
+				malloc(strlen(nombre_Local) + 1);
+		usuario_Nuevo -> Nombre =
+				strcat(usuario_Nuevo -> Nombre,nombre_Local);
 		printf("%s \n\n",usuario_Nuevo ->Nombre);
 		fflush(stdin);
 		verf_Linea = '\0';
@@ -52,8 +57,12 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 			amigo_Nuevo = (Amigo *)malloc(sizeof(Amigo));
 			amigo_Nuevo ->anterior = NULL;
 			amigo_Nuevo ->siguiente = NULL;
-			fscanf(files,"%s",amigo_Nuevo -> Nombre);
+			fscanf(files,"%s",nombre_Local);
 			fflush(stdin);
+			amigo_Nuevo -> Nombre =
+							malloc(strlen(nombre_Local) + 1);
+			amigo_Nuevo -> Nombre =
+					strcat(amigo_Nuevo -> Nombre,nombre_Local);
 			fscanf(files,"%c",&verf_Linea);
 			fflush(stdin);
 			fflush(stdin);
@@ -75,7 +84,6 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 				usuario_Nuevo -> ultimoAmigo -> siguiente =
 						amigo_Nuevo;
 				usuario_Nuevo -> ultimoAmigo = amigo_Nuevo;
-
 			}
 
 			if (feof(files) != 0){break;}
@@ -104,7 +112,7 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 void GuardarResultados(FILE *files,ListaUsuarios *base_Datos_Usuario)
 {
-	// Algoritmo que guardara los resultados de varias cosas
+
 	return;
 
 }
