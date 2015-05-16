@@ -25,13 +25,11 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	aux = base_Datos_Usuario->primerUsuario;
 
 	while (aux != NULL)
-
 	{
 		auxx = aux->primerAmigo;
+
 		while (auxx != NULL)
-
 		{
-
 			Map *nuevo = (Map *)malloc(sizeof(Map));
 			auxMap = nuevo;
 			auxxx = aux->primerAmigo;
@@ -53,9 +51,9 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 
 		}
 
-		if (base_Mapeada->primero == NULL)
+		if (base_Mapeada -> primero == NULL)
 		{
-			base_Mapeada->primero = aux;
+			base_Mapeada -> primero = aux;
 			base_Mapeada -> ultimo = aux;
 		}
 

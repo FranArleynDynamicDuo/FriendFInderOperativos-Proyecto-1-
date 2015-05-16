@@ -24,7 +24,8 @@ int main(int argc,char *argv[])
 	base_Datos_Usuario-> ultimoUsuario = NULL;
 	Leer_BaseDeDatos(entrada,base_Datos_Usuario);
 	output = fopen(argv[2], "w");
-	printf("Primer Usuario: %s\n \n",
+	printf("LECTURA \n \n");
+	printf("Primer Usuario: %s\n",
 			base_Datos_Usuario->primerUsuario->Nombre);
 	printf("Ultimo Usuario: %s \n \n",
 			base_Datos_Usuario->ultimoUsuario->Nombre);
@@ -32,12 +33,12 @@ int main(int argc,char *argv[])
 	base_Mapeada -> primero = NULL;
 	base_Mapeada-> ultimo = NULL;
 	Mapeo(base_Datos_Usuario,base_Mapeada);
-
-	printf("Primer Usuario: %s\n \n",
+	printf("MAP \n \n");
+	printf("Primer Usuario: %s\n",
 			base_Mapeada -> primero -> UsuarioMap);
 	printf("Primer Amigo: %s\n \n",
 			base_Mapeada -> primero -> AmigoMap);
-	printf("Ultimo Usuario: %s \n \n",
+	printf("Ultimo Usuario: %s \n",
 			base_Mapeada -> ultimo-> UsuarioMap);
 	printf("Ultimo Amigo: %s \n \n",
 			base_Mapeada -> ultimo-> AmigoMap);
