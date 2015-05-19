@@ -19,7 +19,7 @@ typedef struct amigoM
 } amigoM;
 
 
-typedef struct map
+typedef struct Map
 
 {
 	char* UsuarioMap;
@@ -31,7 +31,7 @@ typedef struct map
 
 } Map;
 
-typedef struct listaMap
+typedef struct ListaMap
 
 {
 	Map *primero;
@@ -41,6 +41,8 @@ typedef struct listaMap
 
 ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 		ListaMap *base_Mapeada);
+
+void Reduce();
 
 
 #endif /* MAP_REDUCE_H_ */

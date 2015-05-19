@@ -8,17 +8,6 @@
 #ifndef LISTAAMIGOS_H_
 #define LISTAAMIGOS_H_
 
-typedef struct usuario
-
-{
-	char* Nombre;
-	struct Usuario *siguiente;
-	struct Usuario *anterior;
-	struct Amigo *primerAmigo;
-	struct Amigo *ultimoAmigo;
-
-} Usuario;
-
 typedef struct Amigo
 
 {
@@ -28,7 +17,18 @@ typedef struct Amigo
 
 } Amigo;
 
-typedef struct listaUsuarios
+typedef struct Usuario
+
+{
+	char* Nombre;
+	struct Usuario *siguiente;
+	struct Usuario *anterior;
+	Amigo *primerAmigo;
+	Amigo *ultimoAmigo;
+
+} Usuario;
+
+typedef struct ListaUsuarios
 
 {
 	Usuario *primerUsuario;
