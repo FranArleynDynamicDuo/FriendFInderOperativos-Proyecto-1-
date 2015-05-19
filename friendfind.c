@@ -39,12 +39,23 @@ int main(int argc,char *argv[])
 
 	Map *aux_Imprimir;
 	aux_Imprimir = base_Mapeada ->primero;
+	amigoM *aux_Imprimir_Amigos;
 
 	while(aux_Imprimir != NULL)
 	{
 		printf("Caja Nueva \n \n");
 		printf("Usuario %s \n", aux_Imprimir ->UsuarioMap);
 		printf("Amigo: %s \n \n",aux_Imprimir ->AmigoMap);
+		aux_Imprimir_Amigos = aux_Imprimir ->primer_Amigo_Map;
+		printf("AMIGOS EN CAJA \n \n");
+
+		while(aux_Imprimir_Amigos)
+		{
+			printf("%s \n",aux_Imprimir_Amigos ->AmigoM);
+			aux_Imprimir_Amigos = aux_Imprimir_Amigos ->siguiente;
+		}
+
+		printf("\n");
 		aux_Imprimir = aux_Imprimir -> siguiente;
 
 
