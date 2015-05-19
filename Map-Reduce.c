@@ -12,11 +12,16 @@
 ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario) /*base_Datos_Usuarios Nombre de la listas de listas*/
 
 {
+	ListaMap *ListaMapeada = (ListaMap *)malloc(sizeof(ListaMap));
+	ListaMapeada->primero = NULL;
+	ListaMapeada->ultimo = NULL;
+
 	Usuario *aux;
 	Amigo *auxx;
 	Amigo *auxxx;
+	AmigoM *auxMap;
+	Map *auxxMap;
 
-	Map *auxMap;
 	aux = base_Datos_Usuario->primerUsuario;
 
 	while (aux != NULL)
@@ -26,20 +31,56 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario) /*base_Datos_Usuarios Nombre 
 		while (auxx != NULL)
 
 		{
-
 			Map *nuevo = (Map *)malloc(sizeof(Map));
-			auxMap = nuevo;
+			nuevo->siguiente = NULL;
+			nuevo->primerAmigoMap = NULL;
+			nuevo->ultimoAmigoMap = NULL;
+
 			auxxx = aux->primerAmigo;
 			nuevo->UsuarioMap = aux->Nombre;
 			nuevo->AmigoMap = auxx->Nombre;
 
-			while (auxxx != NULL)
+			if (ListaMapeada->primero == NULL)
+
 			{
-				amigoM *new  = (new *)malloc(sizeof(new));
+				ListaMapeada->primero = nuevo;
+				ListaMapeada->ultimo = nuevo;
+				auxxMap = nuevo;
+			}
+
+			else if (ListaMapeada->primero != NULL)
+
+			{
+				auxxMap->siguiente = nuevo;
+				ListaMapeada->ultimo;
+				auxxMap = auxxMap->siguiente;
+			}
+
+			while (auxxx != NULL)
+
+			{
+				AmigoM *new  = (AmigoM *)malloc(sizeof(AmigoM));
+				new->siguiente = NULL;
+
 				new->AmigoM = auxxx->Nombre;
-				auxMap->siguiente= new;
-				auxMap = new;
+
+
+				if (nuevo->primerAmigoMap == NULL)
+				{
+					nuevo->primerAmigoMap = new;
+					nuevo->ultimoAmigoMap = new;
+					auxMap = new;
+				}
+
+				else if (nuevo->primerAmigoMap != NULL)
+				{
+					auxMap->siguiente = new;
+					nuevo->ultimoAmigoMap = new;
+					auxMap = auxMap->siguiente;
+				}
+
 				auxxx = auxxx->siguiente;
+
 				if (auxxx == NULL)
 				{
 					auxx = auxx->siguiente;
@@ -47,8 +88,8 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario) /*base_Datos_Usuarios Nombre 
 			}
 
 		}
-
 		aux = aux->siguiente;
 	}
+}
 
 

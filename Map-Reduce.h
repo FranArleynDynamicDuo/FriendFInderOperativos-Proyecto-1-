@@ -13,10 +13,12 @@ typedef struct map
 {
 	char UsuarioMap[30];
 	char AmigoMap[30];
-	struct AmigoM *siguiente;
-	struct AmigoM *anterior;
+	struct Map *siguiente;
+	struct Map *anterior;
+	struct AmigoM *primerAmigoMap;
+	struct AmigoM *ultimoAmigoMap;
 
-} Map
+} Map;
 
 typedef struct amigoM
 
@@ -25,7 +27,7 @@ typedef struct amigoM
 	struct Amigo *siguiente;
 	struct Amigo *anterior;
 
-} amigoM;
+} AmigoM;
 
 typedef struct listaMap
 

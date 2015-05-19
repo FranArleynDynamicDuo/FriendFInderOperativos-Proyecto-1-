@@ -50,8 +50,8 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 			printf("SEGUNDO CICLO \n \n");
 			fflush(stdin);
 			amigo_Nuevo = (Amigo *)malloc(sizeof(Amigo));
-			amigo_Nuevo ->anterior = NULL;
-			amigo_Nuevo ->siguiente = NULL;
+			amigo_Nuevo -> anterior = NULL;
+			amigo_Nuevo -> siguiente = NULL;
 			fscanf(files,"%s",amigo_Nuevo -> Nombre);
 			fflush(stdin);
 			fscanf(files,"%c",&verf_Linea);
