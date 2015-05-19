@@ -9,24 +9,27 @@
 #define MAP_REDUCE_H_
 #include "ListaAmigos.h"
 
+typedef struct amigoM
+
+{
+	char* AmigoM;
+	struct amigoM *siguiente;
+	struct amigoM *anterior;
+
+} amigoM;
+
+
 typedef struct map
 
 {
 	char* UsuarioMap;
 	char* AmigoMap;
-	struct AmigoM *siguiente;
-	struct AmigoM *anterior;
+	amigoM *siguiente;
+	amigoM *anterior;
+	amigoM *primer_Amigo_Map;
+	amigoM *ultimo_Amigo_Map;
 
 } Map;
-
-typedef struct amigoM
-
-{
-	char* AmigoM;
-	struct Amigo *siguiente;
-	struct Amigo *anterior;
-
-} amigoM;
 
 typedef struct listaMap
 

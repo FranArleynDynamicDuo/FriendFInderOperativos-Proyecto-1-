@@ -15,37 +15,44 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 /*base_Datos_Usuarios Nombre de la listas de listas*/
 
 {
-	Usuario *aux;
-	Amigo *auxx;
+	Usuario *aux_Usuario;
+	Amigo *aux_Amigo;
 	Amigo *auxxx;
 	base_Mapeada-> primero = NULL;
 	base_Mapeada-> ultimo = NULL;
+	Map *nuevo_Map;
+	amigoM *new_Friend;
 
 	Map *auxMap;
-	aux = base_Datos_Usuario->primerUsuario;
+	aux_Usuario = base_Datos_Usuario->primerUsuario;
 
-	while (aux != NULL)
+	while (aux_Usuario != NULL)
 	{
-		auxx = aux->primerAmigo;
+		aux_Amigo = aux_Usuario->primerAmigo;
 
-		while (auxx != NULL)
+		while (aux_Amigo != NULL)
 		{
-			Map *nuevo = (Map *)malloc(sizeof(Map));
-			auxMap = nuevo;
-			auxxx = aux->primerAmigo;
-			nuevo->UsuarioMap = aux->Nombre;
-			nuevo->AmigoMap = auxx->Nombre;
+			nuevo_Map = (Map *)malloc(sizeof(Map));
+			nuevo_Map ->siguiente = NULL;
+			nuevo_Map ->primer_Amigo_Map = NULL;
+			nuevo_Map ->ultimo_Amigo_Map = NULL;
+
+			//auxMap = nuevo;
+
+			auxxx = aux_Usuario->primerAmigo;
+			nuevo_Map->UsuarioMap = aux_Usuario->Nombre;
+			nuevo_Map->AmigoMap = aux_Amigo->Nombre;
 
 			while (auxxx != NULL)
 			{
-				amigoM *new  = (amigoM *)malloc(sizeof(new));
-				new->AmigoM = auxxx->Nombre;
-				auxMap->siguiente= new;
-				auxMap = new;
+				new_Friend  = (amigoM *)malloc(sizeof(amigoM));
+				new_Friend->AmigoM = auxxx->Nombre;
+				//auxMap->siguiente= new_Friend;
+				//auxMap = new_Friend;
 				auxxx = auxxx->siguiente;
 				if (auxxx == NULL)
 				{
-					auxx = auxx->siguiente;
+					aux_Amigo = aux_Amigo->siguiente;
 				}
 			}
 
@@ -53,19 +60,19 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 
 		if (base_Mapeada -> primero == NULL)
 		{
-			base_Mapeada -> primero = aux;
-			base_Mapeada -> ultimo = aux;
+			base_Mapeada -> primero = nuevo_Map;
+			base_Mapeada -> ultimo = nuevo_Map;
 		}
 
 		else
 		{
-			aux -> anterior =
-					base_Mapeada -> ultimo;
+			//nuevo_Map-> anterior =
+			//		base_Mapeada -> ultimo;
 			base_Mapeada -> ultimo -> siguiente =
-					aux;
-			base_Mapeada -> ultimo = aux;
+					nuevo_Map;
+			base_Mapeada -> ultimo = nuevo_Map;
 		}
-		aux = aux->siguiente;
+		aux_Usuario = aux_Usuario->siguiente;
 	}
 	return base_Mapeada;
 }
