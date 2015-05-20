@@ -24,8 +24,8 @@ typedef struct Map
 {
 	char* UsuarioMap;
 	char* AmigoMap;
-	amigoM *siguiente;
-	amigoM *anterior;
+	struct Map *siguiente;
+	struct Map *anterior;
 	amigoM *primer_Amigo_Map;
 	amigoM *ultimo_Amigo_Map;
 

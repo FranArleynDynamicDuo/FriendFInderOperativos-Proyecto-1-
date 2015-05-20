@@ -8,6 +8,9 @@
 #include <stdlib.h>
 #include "Map-Reduce.h"
 #include "ListaAmigos.h"
+#include <string.h>
+#include <stdio.h>
+#include "TextInputOutput.h"
 
 ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 		ListaMap *base_Mapeada)
@@ -25,7 +28,7 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	amigoM *new_Friend;
 
 
-	aux_Usuario = base_Datos_Usuario->primerUsuario;
+	aux_Usuario = base_Datos_Usuario-> primerUsuario;
 
 	while (aux_Usuario != NULL)
 	{
@@ -38,15 +41,22 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 			nuevo_Map ->primer_Amigo_Map = NULL;
 			nuevo_Map ->ultimo_Amigo_Map = NULL;
 
+
 			if(base_Mapeada->primero != NULL)
 			{
-				aux_Comp = base_Mapeada->primero;
+				aux_Comp = (Map *)malloc(sizeof(Map));
+				aux_Comp = base_Mapeada -> primero;
+				printf("aux_Comp: %s",aux_Comp ->UsuarioMap );
 
-				while(aux_Comp->UsuarioMap != aux_Usuario ->Nombre)
+				while((strcmp(aux_Comp -> UsuarioMap,
+						aux_Usuario -> Nombre)))
+
 				{
-					if ((aux_Comp ->UsuarioMap == aux_Amigo ->Nombre)
-						&
-						(aux_Comp ->AmigoMap == aux_Usuario ->Nombre))
+					if ((((strcmp(aux_Comp -> UsuarioMap,
+							aux_Amigo -> Nombre)) == 0)
+							&&
+							((strcmp(aux_Comp ->AmigoMap,
+									aux_Usuario ->Nombre)) == 0)))
 					{
 
 						while(aux_Amigo != NULL)
@@ -54,11 +64,14 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 							new_Friend  = (amigoM *)malloc(
 									sizeof(amigoM));
 							new_Friend ->siguiente = NULL;
+
 							new_Friend ->AmigoM = aux_Amigo->Nombre;
-							aux_Usuario -> ultimoAmigo -> siguiente =
+							new_Friend->anterior =
+									aux_Comp -> ultimo_Amigo_Map;
+							aux_Comp ->ultimo_Amigo_Map ->siguiente =
 									new_Friend;
-							aux_Usuario -> ultimoAmigo = new_Friend;
-							aux_Amigo = aux_Amigo ->siguiente;
+							aux_Comp ->ultimo_Amigo_Map = new_Friend;
+							aux_Amigo = aux_Amigo -> siguiente;
 						}
 						break;
 					}
@@ -115,11 +128,6 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 						base_Mapeada -> ultimo = nuevo_Map;
 					}
 		}
-
-
-
-
-
 		aux_Usuario = aux_Usuario->siguiente;
 	}
 	return base_Mapeada;

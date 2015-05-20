@@ -58,28 +58,7 @@ int main(int argc,char *argv[])
 		printf("\n");
 		aux_Imprimir = aux_Imprimir -> siguiente;
 
-
-
 	}
-
-//	printf("Primer Usuario: %s\n",
-//			base_Mapeada -> primero -> UsuarioMap);
-//	printf("Primer Amigo: %s\n",
-//			base_Mapeada -> primero -> AmigoMap);
-//	printf("Primer Amigo de primer Amigo: %s\n",
-//				base_Mapeada -> primero ->primer_Amigo_Map ->AmigoM);
-//	printf("Ultimo Amigo de primer Amigo: %s\n \n",
-//				base_Mapeada -> primero ->ultimo_Amigo_Map->AmigoM);
-//
-//
-//	printf("Ultimo Usuario: %s \n",
-//			base_Mapeada -> ultimo-> UsuarioMap);
-//	printf("Ultimo Amigo: %s \n",
-//			base_Mapeada -> ultimo-> AmigoMap);
-//	printf("Primer Amigo de Ultimo Amigo: %s\n",
-//				base_Mapeada ->ultimo ->primer_Amigo_Map ->AmigoM);
-//	printf("Ultimo Amigo de Ultimo Amigo: %s\n \n",
-//				base_Mapeada ->ultimo ->ultimo_Amigo_Map->AmigoM);
 
 	return 0;
 }
