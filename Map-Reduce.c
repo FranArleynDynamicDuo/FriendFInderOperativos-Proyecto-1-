@@ -204,8 +204,8 @@ ListaMap *Reduce(ListaMap *base_Mapeada, ListaMap *base_Reduce)
 			while (aux_Map_Amigo2 != NULL)
 			{
 
-				strcpy(nombre_Com,aux_Map_Amigo);
-				strcpy(nombre_Com2,aux_Map_Amigo2);
+				strcpy(nombre_Com,aux_Map_Amigo->AmigoM);
+				strcpy(nombre_Com2,aux_Map_Amigo2->AmigoM);
 
 
 				if (strcmp(aux_Map_Amigo,aux_Map_Amigo2) == 0)
@@ -225,10 +225,8 @@ ListaMap *Reduce(ListaMap *base_Mapeada, ListaMap *base_Reduce)
 						nuevo_Reduce ->ultimo_Amigo_Map = new_Reduce;
 					}
 				}
-				else
-				{
-					aux_Map_Amigo2 = aux_Map_Amigo2 -> siguiente;
-				}
+
+				aux_Map_Amigo2 = aux_Map_Amigo2 -> siguiente;
 			}
 
 			aux_Map_Amigo = aux_Map_Amigo -> siguiente;
