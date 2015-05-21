@@ -1,8 +1,7 @@
-Francisco -> Alejandra Arleyn Roberto Jhonny Luis Eneko Gabriel
+Francisco -> Alejandra Arleyn Roberto Jhonny Luis Eneko
 Alejandra -> Francisco Roberto Jhonny Eneko
-Arleyn -> Francisco Jhonny Gabriel
+Arleyn -> Francisco Jhonny
 Roberto -> Francisco Alejandra Jhonny Luis Eneko
 Jhonny -> Francisco Alejandra Roberto Arleyn
 Luis -> Francisco Roberto Eneko
 Eneko -> Francisco Alejandra Luis Roberto
-Gabriel -> Francisco Arleyn
