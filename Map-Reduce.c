@@ -114,12 +114,15 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 				}
 			}
 
-			nuevo_Map = (Map *)malloc(sizeof(Map));
-			nuevo_Map -> siguiente = NULL;
-			nuevo_Map -> primer_Amigo_Map = NULL;
-			nuevo_Map -> ultimo_Amigo_Map = NULL;
-			nuevo_Map->UsuarioMap = aux_Usuario->Nombre;
-			nuevo_Map->AmigoMap = aux_Amigo->Nombre;
+			if (sem == 0)
+			{
+				nuevo_Map = (Map *)malloc(sizeof(Map));
+				nuevo_Map -> siguiente = NULL;
+				nuevo_Map -> primer_Amigo_Map = NULL;
+				nuevo_Map -> ultimo_Amigo_Map = NULL;
+				nuevo_Map-> UsuarioMap = aux_Usuario->Nombre;
+				nuevo_Map-> AmigoMap = aux_Amigo->Nombre;
+			}
 
 
 			if (sem == 1)
