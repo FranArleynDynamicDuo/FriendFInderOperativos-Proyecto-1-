@@ -110,8 +110,8 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 							aux_Comp ->ultimo_Amigo_Map = new_Friend;
 							aux_Amigo_De_Amigo =
 									aux_Amigo_De_Amigo -> siguiente;
-							free(nuevo_Map);
 						}
+						free(nuevo_Map);
 						sem = 1;
 						break;
 					}
@@ -121,9 +121,6 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 					strcpy(amigo_Comp,aux_Comp -> AmigoMap);
 				}
 			}
-
-
-
 
 			if (sem == 1)
 			{
@@ -158,13 +155,13 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 				}
 			}
 
-			if ((base_Mapeada -> primero == NULL) && (sem == 0) )
+			if ((base_Mapeada -> primero == NULL) && (sem == 0))
 					{
 						base_Mapeada -> primero = nuevo_Map;
 						base_Mapeada -> ultimo = nuevo_Map;
 					}
 
-			else if ((base_Mapeada -> primero != NULL) && (sem == 0) )
+			else if ((base_Mapeada -> primero != NULL) && (sem == 0))
 					{
 						//nuevo_Map-> anterior =
 						//		base_Mapeada -> ultimo;
