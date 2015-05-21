@@ -33,16 +33,14 @@ ListaMap *Reduce(ListaMap *base_Mapeada, ListaMap *base_Reduce)
 
 		aux_Map_Amigo = aux_Map_Usuario -> primer_Amigo_Map;
 
-
 		while (aux_Map_Amigo != NULL)
 		{
 			aux_Map_Amigo2 = aux_Map_Amigo -> siguiente;
 			while (aux_Map_Amigo2 != NULL)
 			{
 
-				strcpy(nombre_Com,aux_Map_Amigo);
-				strcpy(nombre_Com2,aux_Map_Amigo2);
-
+				strcpy(nombre_Com,aux_Map_Amigo->AmigoM);
+				strcpy(nombre_Com2,aux_Map_Amigo2->AmigoM);
 
 				if (strcmp(aux_Map_Amigo,aux_Map_Amigo2) == 0)
 				{
