@@ -80,7 +80,7 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 //				printf("amigo_MapAct: %s \n\n",amigo_MapAct);
 
 				while((strcmp(usuario_Comp,nombre_MapAct) != 0) &&
-						(aux_Comp -> siguiente != NULL) )
+						(aux_Comp != NULL) )
 
 				{
 //					printf("usuario_Comp: %s \n",usuario_Comp);
