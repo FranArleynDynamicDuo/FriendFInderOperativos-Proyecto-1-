@@ -132,10 +132,3 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	}
 	return base_Mapeada;
 }
-
-void Reduce()
-{
-
-
-}
-

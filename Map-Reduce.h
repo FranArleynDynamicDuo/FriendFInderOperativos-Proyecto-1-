@@ -42,7 +42,7 @@ typedef struct ListaMap
 ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 		ListaMap *base_Mapeada);
 
-void Reduce();
+ListaMap *Reduce(ListaMap *base_Mapeada, ListaMap *base_Reduce);
 
 
 #endif /* MAP_REDUCE_H_ */
