@@ -41,6 +41,9 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 				malloc(strlen(nombre_Local) + 1);
 		usuario_Nuevo -> Nombre =
 				strcat(usuario_Nuevo -> Nombre,nombre_Local);
+
+		printf("%s \n\n",usuario_Nuevo ->Nombre);
+		fflush(stdin);
 		verf_Linea = '\0';
 
 		// En este ciclo se leeran los amigos, leyendo un string y
