@@ -40,10 +40,6 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	amigoM *new_Friend;
 
 	int sem;
-	char usuario_Comp[100];
-	char nombre_MapAct[100];
-	char amigo_MapAct[100];
-	char amigo_Comp[100];
 
 	aux_Usuario = base_Datos_Usuario-> primerUsuario;
 
@@ -60,6 +56,11 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 			{
 				aux_Comp = (Map *)malloc(sizeof(Map));
 				aux_Comp = base_Mapeada -> primero;
+
+				char usuario_Comp[100];
+				char nombre_MapAct[100];
+				char amigo_MapAct[100];
+				char amigo_Comp[100];
 
 				strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
 				strcpy(amigo_Comp,aux_Comp -> AmigoMap);
