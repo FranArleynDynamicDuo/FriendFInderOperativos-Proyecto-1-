@@ -40,6 +40,10 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	amigoM *new_Friend;
 
 	int sem;
+	char usuario_Comp[100];
+	char nombre_MapAct[100];
+	char amigo_MapAct[100];
+	char amigo_Comp[100];
 
 	aux_Usuario = base_Datos_Usuario-> primerUsuario;
 
@@ -64,29 +68,15 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 				aux_Comp = (Map *)malloc(sizeof(Map));
 				aux_Comp = base_Mapeada -> primero;
 
-				char usuario_Comp[100];
-				char nombre_MapAct[100];
-				char amigo_MapAct[100];
-				char amigo_Comp[100];
-
 				strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
 				strcpy(amigo_Comp,aux_Comp -> AmigoMap);
 				strcpy(nombre_MapAct,aux_Usuario -> Nombre);
 				strcpy(amigo_MapAct,aux_Amigo -> Nombre);
-//
-//				printf("usuario_Comp: %s \n",usuario_Comp);
-//				printf("amigo_Comp: %s \n",amigo_Comp);
-//				printf("nombre_MapAct: %s \n",nombre_MapAct);
-//				printf("amigo_MapAct: %s \n\n",amigo_MapAct);
 
 				while((strcmp(usuario_Comp,nombre_MapAct) != 0) &&
 						(aux_Comp != NULL) )
 
 				{
-//					printf("usuario_Comp: %s \n",usuario_Comp);
-//					printf("amigo_Comp: %s \n",amigo_Comp);
-//					printf("nombre_MapAct: %s \n",nombre_MapAct);
-//					printf("amigo_MapAct: %s \n\n",amigo_MapAct);
 
 					if ((((strcmp(nombre_MapAct,amigo_Comp)) == 0)
 							&&
@@ -122,7 +112,6 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 						strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
 						strcpy(amigo_Comp,aux_Comp -> AmigoMap);
 					}
-
 				}
 			}
 
