@@ -47,100 +47,100 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 			nuevo_Map -> siguiente = NULL;
 			nuevo_Map -> primer_Amigo_Map = NULL;
 			nuevo_Map -> ultimo_Amigo_Map = NULL;
+			aux_Comp = (Map *)malloc(sizeof(Map));
+			aux_Comp = base_Mapeada -> primero;
 
+			strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
+			strcpy(amigo_Comp,aux_Comp -> AmigoMap);
+			strcpy(nombre_MapAct,aux_Usuario -> Nombre);
+			strcpy(amigo_MapAct,aux_Amigo -> Nombre);
 
-			if(base_Mapeada->primero != NULL)
+			while((strcmp(usuario_Comp,nombre_MapAct) != 0) &&
+					(aux_Comp -> siguiente != NULL))
 			{
-				aux_Comp = (Map *)malloc(sizeof(Map));
-				aux_Comp = base_Mapeada -> primero;
+				printf("usuario_Comp: %s \n",usuario_Comp);
+				printf("amigo_Comp: %s \n",amigo_Comp);
+				printf("nombre_MapAct: %s \n",nombre_MapAct);
+				printf("amigo_MapAct: %s \n\n",amigo_MapAct);
 
-				strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
-				strcpy(amigo_Comp,aux_Comp -> AmigoMap);
-				strcpy(nombre_MapAct,aux_Usuario -> Nombre);
-				strcpy(amigo_MapAct,aux_Amigo -> Nombre);
-//
-//				printf("usuario_Comp: %s \n",usuario_Comp);
-//				printf("amigo_Comp: %s \n",amigo_Comp);
-//				printf("nombre_MapAct: %s \n",nombre_MapAct);
-//				printf("amigo_MapAct: %s \n\n",amigo_MapAct);
-
-
-
-				while((strcmp(usuario_Comp,nombre_MapAct) != 0) &&
-						(aux_Comp -> siguiente != NULL) )
-
+				if ((((strcmp(nombre_MapAct,amigo_Comp)) == 0)
+						&&
+						((strcmp(usuario_Comp,amigo_MapAct)) == 0)))
 				{
-//					printf("usuario_Comp: %s \n",usuario_Comp);
-//					printf("amigo_Comp: %s \n",amigo_Comp);
-//					printf("nombre_MapAct: %s \n",nombre_MapAct);
-//					printf("amigo_MapAct: %s \n\n",amigo_MapAct);
+					printf("Se encontro un repetido con %s y %s y %s y %s \n \n",
+							nombre_MapAct,amigo_Comp,usuario_Comp,amigo_MapAct);
 
-					if ((((strcmp(nombre_MapAct,amigo_Comp)) == 0)
-							&&
-							((strcmp(usuario_Comp,amigo_MapAct)) == 0)))
-					{
-						printf("Se encontro un repetido con %s y %s y %s y %s \n \n",
-								nombre_MapAct,amigo_Comp,usuario_Comp,amigo_MapAct);
-						aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
-
-						while(aux_Amigo_De_Amigo != NULL)
-						{
-							new_Friend  = (amigoM *)malloc(
-									sizeof(amigoM));
-							new_Friend ->siguiente = NULL;
-
-							new_Friend ->AmigoM =
-									aux_Amigo_De_Amigo->Nombre;
-							new_Friend->anterior =
-									aux_Comp -> ultimo_Amigo_Map;
-							aux_Comp ->ultimo_Amigo_Map ->siguiente =
-									new_Friend;
-							aux_Comp ->ultimo_Amigo_Map = new_Friend;
-							aux_Amigo_De_Amigo =
-									aux_Amigo_De_Amigo -> siguiente;
-						}
-						aux_Amigo = aux_Amigo -> siguiente;
-						break;
-					}
-
-					aux_Comp = aux_Comp -> siguiente;
-					strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
-
-				}
-			}
-
-			aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
-			nuevo_Map->UsuarioMap = aux_Usuario->Nombre;
-			nuevo_Map->AmigoMap = aux_Amigo->Nombre;
-
-			while (aux_Amigo_De_Amigo != NULL)
-			{
-				new_Friend  = (amigoM *)malloc(sizeof(amigoM));
-				new_Friend->AmigoM = aux_Amigo_De_Amigo->Nombre;
-
-				if (nuevo_Map ->primer_Amigo_Map == NULL)
-				{
-					nuevo_Map ->primer_Amigo_Map = new_Friend;
-					nuevo_Map ->ultimo_Amigo_Map = new_Friend;
+					semaforo = 1;
+					break;
 				}
 
 				else
 				{
+					aux_Comp = aux_Comp -> siguiente;
+					strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
+				}
+			}
+
+
+
+			if(semaforo == 1)
+			{
+				aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
+
+				while(aux_Amigo_De_Amigo != NULL )
+				{
+					new_Friend  = (amigoM *)malloc(sizeof(amigoM));
+					new_Friend ->siguiente = NULL;
+					new_Friend ->AmigoM = aux_Amigo_De_Amigo->Nombre;
+					new_Friend->anterior =
+							aux_Comp -> ultimo_Amigo_Map;
+					aux_Comp ->ultimo_Amigo_Map ->siguiente =
+							new_Friend;
+					aux_Comp ->ultimo_Amigo_Map = new_Friend;
+					aux_Amigo_De_Amigo =
+							aux_Amigo_De_Amigo -> siguiente;
+
 					new_Friend->anterior =
 							nuevo_Map -> ultimo_Amigo_Map;
 					nuevo_Map ->ultimo_Amigo_Map ->siguiente =
 							new_Friend;
 					nuevo_Map ->ultimo_Amigo_Map = new_Friend;
-
 				}
 
-				aux_Amigo_De_Amigo = aux_Amigo_De_Amigo->siguiente;
+			}
 
-				if (aux_Amigo_De_Amigo == NULL)
+			else if (semaforo == 0)
+			{
+				aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
+				nuevo_Map->UsuarioMap = aux_Usuario->Nombre;
+				nuevo_Map->AmigoMap = aux_Amigo->Nombre;
+
+				while (aux_Amigo_De_Amigo != NULL)
 				{
-					aux_Amigo = aux_Amigo->siguiente;
+					new_Friend  = (amigoM *)malloc(sizeof(amigoM));
+					new_Friend->AmigoM = aux_Amigo_De_Amigo->Nombre;
+
+					if (nuevo_Map ->primer_Amigo_Map == NULL)
+					{
+						nuevo_Map ->primer_Amigo_Map = new_Friend;
+						nuevo_Map ->ultimo_Amigo_Map = new_Friend;
+					}
+
+					else
+					{
+						new_Friend->anterior =
+								nuevo_Map -> ultimo_Amigo_Map;
+						nuevo_Map ->ultimo_Amigo_Map ->siguiente =
+								new_Friend;
+						nuevo_Map ->ultimo_Amigo_Map = new_Friend;
+					}
+
+					aux_Amigo_De_Amigo = aux_Amigo_De_Amigo->siguiente;
 				}
 			}
+
+			aux_Amigo = aux_Amigo -> siguiente;
+
 
 			if (base_Mapeada -> primero == NULL)
 					{
@@ -156,7 +156,7 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 								nuevo_Map;
 						base_Mapeada -> ultimo = nuevo_Map;
 					}
-		}
+				}
 		aux_Usuario = aux_Usuario->siguiente;
 	}
 	return base_Mapeada;
