@@ -108,9 +108,9 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 							aux_Comp ->ultimo_Amigo_Map = new_Friend;
 							aux_Amigo_De_Amigo =
 									aux_Amigo_De_Amigo -> siguiente;
-							sem = 1;
 						}
 						aux_Amigo = aux_Amigo -> siguiente;
+						sem = 1;
 						break;
 					}
 
@@ -168,11 +168,6 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 								nuevo_Map;
 						base_Mapeada -> ultimo = nuevo_Map;
 					}
-
-			if (sem == 1)
-			{
-				aux_Amigo = aux_Amigo->siguiente;
-			}
 		}
 		aux_Usuario = aux_Usuario->siguiente;
 	}
