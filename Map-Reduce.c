@@ -208,7 +208,7 @@ ListaMap *Reduce(ListaMap *base_Mapeada, ListaMap *base_Reduce)
 				strcpy(nombre_Com2,aux_Map_Amigo2->AmigoM);
 
 
-				if (strcmp(aux_Map_Amigo,aux_Map_Amigo2) == 0)
+				if (strcmp(nombre_Com,nombre_Com2) == 0)
 				{
 					new_Reduce = (amigoM *)malloc(sizeof(amigoM));
 					new_Reduce -> AmigoM = aux_Map_Amigo -> AmigoM;
