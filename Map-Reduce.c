@@ -120,13 +120,10 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 				}
 			}
 
+			aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
 			nuevo_Map->UsuarioMap = aux_Usuario->Nombre;
 			nuevo_Map->AmigoMap = aux_Amigo->Nombre;
 
-			if (sem == 0)
-			{
-				aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
-			}
 
 			while ((aux_Amigo_De_Amigo != NULL) && (sem = 0))
 			{
