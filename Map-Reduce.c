@@ -49,6 +49,13 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 
 		while (aux_Amigo != NULL)
 		{
+			nuevo_Map = (Map *)malloc(sizeof(Map));
+			nuevo_Map -> siguiente = NULL;
+			nuevo_Map -> primer_Amigo_Map = NULL;
+			nuevo_Map -> ultimo_Amigo_Map = NULL;
+			nuevo_Map-> UsuarioMap = aux_Usuario->Nombre;
+			nuevo_Map-> AmigoMap = aux_Amigo->Nombre;
+
 			aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
 			sem = 0;
 
@@ -103,6 +110,7 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 							aux_Comp ->ultimo_Amigo_Map = new_Friend;
 							aux_Amigo_De_Amigo =
 									aux_Amigo_De_Amigo -> siguiente;
+							free(nuevo_Map);
 						}
 						sem = 1;
 						break;
@@ -114,15 +122,7 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 				}
 			}
 
-			if (sem == 0)
-			{
-				nuevo_Map = (Map *)malloc(sizeof(Map));
-				nuevo_Map -> siguiente = NULL;
-				nuevo_Map -> primer_Amigo_Map = NULL;
-				nuevo_Map -> ultimo_Amigo_Map = NULL;
-				nuevo_Map-> UsuarioMap = aux_Usuario->Nombre;
-				nuevo_Map-> AmigoMap = aux_Amigo->Nombre;
-			}
+
 
 
 			if (sem == 1)
@@ -158,13 +158,13 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 				}
 			}
 
-			if (base_Mapeada -> primero == NULL)
+			if ((base_Mapeada -> primero == NULL) && (sem == 0) )
 					{
 						base_Mapeada -> primero = nuevo_Map;
 						base_Mapeada -> ultimo = nuevo_Map;
 					}
 
-			else
+			else if ((base_Mapeada -> primero != NULL) && (sem == 0) )
 					{
 						//nuevo_Map-> anterior =
 						//		base_Mapeada -> ultimo;
