@@ -125,7 +125,7 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 			nuevo_Map->AmigoMap = aux_Amigo->Nombre;
 
 
-			while ((aux_Amigo_De_Amigo != NULL) && (sem = 0))
+			while ((aux_Amigo_De_Amigo != NULL) && (sem == 0))
 			{
 				new_Friend  = (amigoM *)malloc(sizeof(amigoM));
 				new_Friend->AmigoM = aux_Amigo_De_Amigo->Nombre;
