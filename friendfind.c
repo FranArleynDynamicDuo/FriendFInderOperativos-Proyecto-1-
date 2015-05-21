@@ -35,10 +35,10 @@ int main(int argc,char *argv[])
 	base_Mapeada-> ultimo = NULL;
 	Mapeo(base_Datos_Usuario,base_Mapeada);
 
-	ListaMap *base_Reduce = (ListaMap *)malloc(sizeof(ListaMap));
-	base_Reduce -> primero = NULL;
-	base_Reduce-> ultimo = NULL;
-	Reduce(base_Mapeada,base_Reduce);
+	//ListaMap *base_Reduce = (ListaMap *)malloc(sizeof(ListaMap));
+	//base_Reduce -> primero = NULL;
+	//base_Reduce-> ultimo = NULL;
+	//Reduce(base_Mapeada,base_Reduce);
 
 
 	printf("MAP \n \n");
