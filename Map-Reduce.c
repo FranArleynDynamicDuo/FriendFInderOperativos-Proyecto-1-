@@ -117,8 +117,12 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 					}
 
 					aux_Comp = aux_Comp -> siguiente;
-					strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
-					strcpy(amigo_Comp,aux_Comp -> AmigoMap);
+					if (aux_Comp != NULL)
+					{
+						strcpy(usuario_Comp,aux_Comp -> UsuarioMap);
+						strcpy(amigo_Comp,aux_Comp -> AmigoMap);
+					}
+
 				}
 			}
 
