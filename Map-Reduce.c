@@ -27,6 +27,9 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	Map *aux_Comp;
 	amigoM *new_Friend;
 
+	char nombre_Comp[100];
+	char nombre_MapAct[100];
+
 
 	aux_Usuario = base_Datos_Usuario-> primerUsuario;
 
@@ -37,48 +40,60 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 		while (aux_Amigo != NULL)
 		{
 			nuevo_Map = (Map *)malloc(sizeof(Map));
-			nuevo_Map ->siguiente = NULL;
-			nuevo_Map ->primer_Amigo_Map = NULL;
-			nuevo_Map ->ultimo_Amigo_Map = NULL;
+			nuevo_Map -> siguiente = NULL;
+			nuevo_Map -> primer_Amigo_Map = NULL;
+			nuevo_Map -> ultimo_Amigo_Map = NULL;
 
 
 			if(base_Mapeada->primero != NULL)
 			{
 				aux_Comp = (Map *)malloc(sizeof(Map));
 				aux_Comp = base_Mapeada -> primero;
-				printf("aux_Comp: %s",aux_Comp ->UsuarioMap );
+				printf("aux_Comp: %s\n",aux_Comp ->UsuarioMap );
+				printf("aux_Usuario: %s\n",aux_Usuario ->Nombre );
 
-				while((strcmp(aux_Comp -> UsuarioMap,
-						aux_Usuario -> Nombre)))
+
+				strcpy(nombre_Comp,aux_Comp -> UsuarioMap);
+				strcpy(nombre_MapAct,aux_Usuario -> Nombre);
+
+
+				while((strcmp(nombre_Comp,nombre_MapAct) != 0) &&
+						(aux_Comp -> siguiente != NULL) )
 
 				{
-					if ((((strcmp(aux_Comp -> UsuarioMap,
-							aux_Amigo -> Nombre)) == 0)
-							&&
-							((strcmp(aux_Comp ->AmigoMap,
-									aux_Usuario ->Nombre)) == 0)))
+//					if ((((strcmp(aux_Comp -> UsuarioMap,
+//							aux_Amigo -> Nombre)) == 0)
+//							&&
+//							((strcmp(aux_Comp ->AmigoMap,
+//									aux_Usuario ->Nombre)) == 0)))
+//					{
+//
+//						while(aux_Amigo != NULL)
+//						{
+//							new_Friend  = (amigoM *)malloc(
+//									sizeof(amigoM));
+//							new_Friend ->siguiente = NULL;
+//
+//							new_Friend ->AmigoM = aux_Amigo->Nombre;
+//							new_Friend->anterior =
+//									aux_Comp -> ultimo_Amigo_Map;
+//							aux_Comp ->ultimo_Amigo_Map ->siguiente =
+//									new_Friend;
+//							aux_Comp ->ultimo_Amigo_Map = new_Friend;
+//							aux_Amigo = aux_Amigo -> siguiente;
+//						}
+//						break;
+//					}
+					if (aux_Comp->siguiente->siguiente == NULL)
 					{
-
-						while(aux_Amigo != NULL)
-						{
-							new_Friend  = (amigoM *)malloc(
-									sizeof(amigoM));
-							new_Friend ->siguiente = NULL;
-
-							new_Friend ->AmigoM = aux_Amigo->Nombre;
-							new_Friend->anterior =
-									aux_Comp -> ultimo_Amigo_Map;
-							aux_Comp ->ultimo_Amigo_Map ->siguiente =
-									new_Friend;
-							aux_Comp ->ultimo_Amigo_Map = new_Friend;
-							aux_Amigo = aux_Amigo -> siguiente;
-						}
-						break;
+						printf("\n \nAux Comp es NULL y va a explotar!");
 					}
-					aux_Comp = aux_Comp ->siguiente;
+
+					aux_Comp = aux_Comp -> siguiente;
+					strcpy(nombre_Comp,aux_Comp ->UsuarioMap);
+
 				}
 			}
-			//auxMap = nuevo;
 
 			aux_Amigo_De_Amigo = aux_Usuario->primerAmigo;
 			nuevo_Map->UsuarioMap = aux_Usuario->Nombre;
