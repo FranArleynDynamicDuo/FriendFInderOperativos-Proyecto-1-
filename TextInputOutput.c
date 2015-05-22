@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ListaAmigos.h"
+#include "Map-Reduce.h"
 
 
 ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
@@ -99,8 +100,29 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 	return base_Datos_Usuario;
 }
 
-void GuardarResultados(FILE *files,ListaUsuarios *base_Datos_Usuario)
+void GuardarResultados(FILE *files,ListaMap *base_Reduce)
 {
+	Map *aux_Imprimir;
+	aux_Imprimir = base_Reduce ->primero;
+	amigoM *aux_Imprimir_Amigos;
+
+	while(aux_Imprimir != NULL)
+		{
+			fprintf(files,"(%s %s) -> ", aux_Imprimir ->UsuarioMap,
+					aux_Imprimir ->AmigoMap);
+			aux_Imprimir_Amigos = aux_Imprimir ->primer_Amigo_Map;
+
+			while(aux_Imprimir_Amigos)
+			{
+				fprintf(files,"%s ",aux_Imprimir_Amigos ->AmigoM);
+				aux_Imprimir_Amigos =
+						aux_Imprimir_Amigos -> siguiente;
+			}
+
+			fprintf(files,"\n");
+			aux_Imprimir = aux_Imprimir -> siguiente;
+
+		}
 
 	return;
 

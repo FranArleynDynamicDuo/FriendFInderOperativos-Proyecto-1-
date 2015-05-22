@@ -156,8 +156,6 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 
 			else if ((base_Mapeada -> primero != NULL) && (sem == 0))
 					{
-						//nuevo_Map-> anterior =
-						//		base_Mapeada -> ultimo;
 						base_Mapeada -> ultimo -> siguiente =
 								nuevo_Map;
 						base_Mapeada -> ultimo = nuevo_Map;
