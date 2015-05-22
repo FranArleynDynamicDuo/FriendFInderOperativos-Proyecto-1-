@@ -1,0 +1,14 @@
+(Francisco Alejandra) -> Roberto Jhonny Eneko 
+(Francisco Arleyn) -> Jhonny 
+(Francisco Roberto) -> Alejandra Jhonny Luis Eneko 
+(Francisco Jhonny) -> Alejandra Arleyn Roberto 
+(Francisco Luis) -> Roberto Eneko 
+(Francisco Eneko) -> Alejandra Roberto Luis 
+(Alejandra Roberto) -> Francisco Jhonny Eneko 
+(Alejandra Jhonny) -> Francisco Roberto 
+(Alejandra Eneko) -> Francisco Roberto 
+(Arleyn Jhonny) -> Francisco 
+(Roberto Jhonny) -> Francisco Alejandra 
+(Roberto Luis) -> Francisco Eneko 
+(Roberto Eneko) -> Francisco Alejandra Luis 
+(Luis Eneko) -> Francisco Roberto 
