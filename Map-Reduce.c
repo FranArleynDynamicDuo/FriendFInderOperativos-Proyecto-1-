@@ -4,18 +4,6 @@
  *  Created on: May 5, 2015
  *      Author: franciscosucre
  */
-/*
- * Nuevo.c
- *
- *  Created on: 20/5/2015
- *      Author: personal
- */
-/*
- * Map-Reduce.c
- *
- *  Created on: May 5, 2015
- *      Author: franciscosucre
- */
 
 #include <stdlib.h>
 #include "Map-Reduce.h"
