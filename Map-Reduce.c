@@ -12,6 +12,13 @@
 #include <stdio.h>
 #include "TextInputOutput.h"
 
+/* @Nombre: Mapeo
+ * @Funcion: Junta los amigos de dos personas en una unica lista,
+ * 			 resultado en una lista Mapeada
+ * @Entrada: *base_Mapeada base de datos a mapear
+ * @Salida: *base_Mapeada Base de datos mapeada
+ */
+
 ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 		ListaMap *base_Mapeada)
 
@@ -154,6 +161,13 @@ ListaMap *Mapeo(ListaUsuarios *base_Datos_Usuario,
 	return base_Mapeada;
 }
 
+/* @Nombre: Reduce
+ * @Funcion: Busca los amigos repetidos en las listas mapeadas, estos
+ * 			 son los amigos en comun entre las 2 personas
+ * @Entrada: *base_Mapeada base de datos mapeada
+ * 			 *base_Reduce base de datos a reducir
+ * @Salida: *base_Reduce Base de datos reducida
+ */
 
 ListaMap *Reduce(ListaMap *base_Mapeada, ListaMap *base_Reduce)
 

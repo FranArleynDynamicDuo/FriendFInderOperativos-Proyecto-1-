@@ -12,6 +12,12 @@
 #include "ListaAmigos.h"
 #include "Map-Reduce.h"
 
+/* @Nombre: Leer_BaseDeDatos
+ * @Funcion: Lee la base de datos de usuarios y amigos de un .txt
+ * @Entrada: *files archivo de donde se leera
+ * 			 *base_Datos_Usuario apuntador de tipo ListaMap
+ * @Salida: *base_Datos_Usuario Base de datos leida
+ */
 
 ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 {
@@ -43,8 +49,6 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 				malloc(strlen(nombre_Local) + 1);
 		usuario_Nuevo -> Nombre =
 				strcat(usuario_Nuevo -> Nombre,nombre_Local);
-
-		printf("%s \n\n",usuario_Nuevo ->Nombre);
 		fflush(stdin);
 		verf_Linea = '\0';
 
@@ -84,11 +88,15 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 
 		}
 
+		// Caso 1: Es el primer usuario
+
 		if (base_Datos_Usuario -> primerUsuario == NULL)
 		{
 			base_Datos_Usuario -> primerUsuario = usuario_Nuevo;
 			base_Datos_Usuario -> ultimoUsuario = usuario_Nuevo;
 		}
+
+		// Caso 2: No es el primer usuario
 
 		else
 		{
@@ -103,6 +111,13 @@ ListaUsuarios *Leer_BaseDeDatos(FILE *files,ListaUsuarios *base_Datos_Usuario)
 	}
 	return base_Datos_Usuario;
 }
+
+/* @Nombre: GuardarResultados
+ * @Funcion: Imprime el resultado del friendfind
+ * @Entrada: *files archivo donde se imprimiran
+ * 			 *base_Reduce apuntador de tipo ListaMap
+ * @Salida: *file archivo .txt, archivo donde se encuentra todas las preguntas del .txt
+ */
 
 void GuardarResultados(FILE *files,ListaMap *base_Reduce)
 {
